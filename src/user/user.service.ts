@@ -11,12 +11,13 @@ export class UserService {
 
   async createUser(registerUserDto: RegisterDto) {
     try {
-      const { fname, lname, email, password } = registerUserDto;
+      const { fname, lname, email, password, role } = registerUserDto;
       const newUser = await this.userModel.create({
         fname,
         lname,
         email,
         password,
+        role,
       });
       console.log('new user :', newUser);
       return newUser;

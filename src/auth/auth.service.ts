@@ -19,7 +19,7 @@ export class AuthService {
       ...registerUserDto,
       password: hash,
     });
-    const payload = { sub: newUser._id };
+    const payload = { sub: newUser._id, role: newUser.role };
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
@@ -37,7 +37,7 @@ export class AuthService {
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
-    const payload = { sub: user._id };
+    const payload = { sub: user._id, role: user.role };
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
