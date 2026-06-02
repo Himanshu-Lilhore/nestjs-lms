@@ -20,7 +20,7 @@ export class UserService {
       });
       console.log('new user :', newUser);
       return newUser;
-    } catch (err) {
+    } catch (err: any) {
       const DUPLICATE_KEY_CODE = 11000; // 11000 err code in mongodb is for duplicacy
       if (err?.code === DUPLICATE_KEY_CODE) {
         throw new ConflictException('Email is already taken');
